@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Laptops | Minimalist & Professional Workstations</title>
+  
+  <!-- Google Fonts: Playfair Display for Serif Elegance, Inter for Clean Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Typography */
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+      /* Light Theme Palette (Grayscale with Muted Teal Accent) */
+      --bg-main: #f9fafb;
+      --bg-surface: #ffffff;
+      --bg-surface-subtle: #f3f4f6;
+      --border-color: #e5e7eb;
+      --border-focus: #9ca3af;
+      
+      --text-main: #111827;
+      --text-muted: #4b5563;
+      --text-light: #9ca3af;
+      
+      --accent: #0f766e; /* Muted Teal Accent */
+      --accent-hover: #115e59;
+      --accent-light: rgba(15, 118, 110, 0.08);
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 16px;
+
+      --transition-smooth: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      /* Dark Theme Palette */
+      --bg-main: #0b0f17;
+      --bg-surface: #111827;
+      --bg-surface-subtle: #1f2937;
+      --border-color: #1f2937;
+      --border-focus: #4b5563;
+
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --text-light: #6b7280;
+
+      --accent: #14b8a6; /* Brighter Teal for Dark Mode */
+      --accent-hover: #2dd4bf;
+      --accent-light: rgba(20, 184, 166, 0.12);
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Base Reset & Core Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Headings */
+    h1, h2, h3, h4, .font-serif {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, textarea {
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    /* Container Utility */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Header & Navigation */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      transition: var(--transition-smooth);
+    }
+
+    [data-theme="dark"] .header {
+      background-color: rgba(17, 24, 39, 0.85);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 4.5rem;
+    }
+
+    .brand-logo {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-logo .dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent);
+      border-radius: 50%;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: var(--transition-smooth);
+      position: relative;
+      padding: 0.25rem 0;
+      cursor: pointer;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--text-main);
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* Theme Toggle Button */
+    .theme-toggle-btn {
+      background: none;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.5rem;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-smooth);
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+
+    .theme-toggle-btn:hover {
+      background-color: var(--bg-surface-subtle);
+      border-color: var(--border-focus);
+    }
+
+    /* Mobile Hamburger Trigger */
+    .mobile-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-main);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 4.5rem;
+      left: 0;
+      width: 100%;
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-lg);
+      z-index: 99;
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .mobile-drawer.open {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .mobile-drawer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .mobile-drawer-links .nav-link {
+      font-size: 1.125rem;
+      display: block;
+    }
+
+    /* Page Views Controller */
+    .page-section {
+      display: none;
+      padding: 4rem 0;
+      animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Button Components */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-size: 0.9375rem;
+      transition: var(--transition-smooth);
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background-color: var(--text-main);
+      color: var(--bg-main);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      border-color: var(--border-color);
+      color: var(--text-main);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-surface-subtle);
+      border-color: var(--border-focus);
+    }
+
+    /* Hero Section */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      padding: 2rem 0;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background-color: var(--accent-light);
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .stat-number {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .stat-label {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+
+    .hero-image-box {
+      position: relative;
+      background-color: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      padding: 2rem;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    .hero-image-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      transition: var(--transition-smooth);
+    }
+
+    .hero-image-box:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Section Headers */
+    .section-header {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 3.5rem auto;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.0625rem;
+    }
+
+    /* Laptop Section & Filtering */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1.25rem;
+      border-radius: var(--radius-md);
+      font-size: 0.875rem;
+      font-weight: 500;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-surface);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background-color: var(--text-main);
+      color: var(--bg-main);
+      border-color: var(--text-main);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--border-focus);
+    }
+
+    .product-image-wrap {
+      position: relative;
+      background-color: var(--bg-surface-subtle);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 220px;
+    }
+
+    .product-image-wrap img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      transition: var(--transition-smooth);
+    }
+
+    .product-card:hover .product-image-wrap img {
+      transform: scale(1.05);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+    }
+
+    .product-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-price {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .product-specs-list {
+      list-style: none;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .product-specs-list li {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed var(--border-color);
+      padding-bottom: 0.3rem;
+    }
+
+    .product-specs-list span.val {
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .product-footer {
+      margin-top: auto;
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .product-footer .btn {
+      width: 100%;
+      font-size: 0.875rem;
+      padding: 0.65rem 1rem;
+    }
+
+    /* Product Modal Dialog */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background-color: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      max-width: 700px;
+      width: 100%;
+      padding: 2.5rem;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(20px);
+      transition: transform 0.25s ease;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: translateY(0);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .modal-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    /* Privacy Policy Layout */
+    .policy-content {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+      max-width: 850px;
+      margin: 0 auto;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .policy-content h3 {
+      font-size: 1.35rem;
+      margin: 2rem 0 0.75rem 0;
+    }
+
+    .policy-content p, .policy-content ul {
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .policy-content ul {
+      padding-left: 1.5rem;
+    }
+
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .contact-info-card {
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-info-item {
+      display: flex;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-info-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-icon {
+      width: 2.75rem;
+      height: 2.75rem;
+      background-color: var(--bg-surface-subtle);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      background-color: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      color: var(--text-main);
+      outline: none;
+      transition: var(--transition-smooth);
+    }
+
+    .form-control:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-light);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .form-status {
+      display: none;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .form-status.success {
+      display: block;
+      background-color: rgba(16, 185, 129, 0.1);
+      color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: auto;
+      background-color: var(--bg-surface);
+      border-top: 1px solid var(--border-color);
+      padding: 4rem 0 2rem 0;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-col h4 {
+      font-size: 0.9375rem;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--text-main);
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .mobile-hamburger {
+        display: block;
+      }
+
+      .mobile-drawer {
+        display: block;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .policy-content {
+        padding: 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Navigation Bar -->
+  <header class="header">
+    <div class="container nav-wrapper">
+      <a href="#" class="brand-logo" onclick="navigateTo('home'); return false;">
+        APEX<span class="dot"></span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <ul class="nav-menu">
+        <li><a class="nav-link active" id="nav-home" onclick="navigateTo('home')">Home</a></li>
+        <li><a class="nav-link" id="nav-laptops" onclick="navigateTo('laptops')">Laptops</a></li>
+        <li><a class="nav-link" id="nav-privacy" onclick="navigateTo('privacy')">Privacy Policy</a></li>
+        <li><a class="nav-link" id="nav-contact" onclick="navigateTo('contact')">Contact Us</a></li>
+      </ul>
+
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <!-- Light / Dark Mode Toggle Button -->
+        <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle dark/light theme">
+          <svg id="sun-icon" style="display: none; width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          <svg id="moon-icon" style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+
+        <!-- Mobile Drawer Hamburger Trigger -->
+        <button id="mobile-hamburger" class="mobile-hamburger" aria-label="Toggle mobile drawer">
+          &#9776;
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Drawer Overlay -->
+  <div id="mobile-drawer" class="mobile-drawer">
+    <ul class="mobile-drawer-links">
+      <li><a class="nav-link active" onclick="navigateTo('home')">Home</a></li>
+      <li><a class="nav-link" onclick="navigateTo('laptops')">Laptops</a></li>
+      <li><a class="nav-link" onclick="navigateTo('privacy')">Privacy Policy</a></li>
+      <li><a class="nav-link" onclick="navigateTo('contact')">Contact Us</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content Layout -->
+  <main class="container">
+
+    <!-- SECTION 1: HOME -->
+    <section id="section-home" class="page-section active">
+      <div class="hero-grid">
+        <div>
+          <span class="hero-tag">Precision Workstations</span>
+          <h1 class="hero-title">Minimalist design. Maximum productivity.</h1>
+          <p class="hero-subtitle">
+            Curated ultraportable laptops built with pure engineering focus, sustained performance, and high-contrast displays for developers and creators.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="navigateTo('laptops')">Explore Laptops</button>
+            <button class="btn btn-secondary" onclick="navigateTo('contact')">Get in Touch</button>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <div class="stat-number">18h+</div>
+              <div class="stat-label">All-Day Battery Life</div>
+            </div>
+            <div>
+              <div class="stat-number">1.1kg</div>
+              <div class="stat-label">Ultralight Chassis</div>
+            </div>
+            <div>
+              <div class="stat-number">99.8%</div>
+              <div class="stat-label">Satisfaction Score</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image-box">
+          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80" alt="Minimalist Sleek Laptop Workstation">
+        </div>
+      </div>
+
+      <!-- Featured Spotlight Grid -->
+      <div style="margin-top: 6rem;">
+        <div class="section-header">
+          <h2 class="section-title">Flagship Selections</h2>
+          <p class="section-subtitle">Engineered without unnecessary distractions. Built for deep focus work.</p>
+        </div>
+        <div class="product-grid" id="featured-grid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: LAPTOPS CATALOG -->
+    <section id="section-laptops" class="page-section">
+      <div class="section-header">
+        <h2 class="section-title">Laptop Collections</h2>
+        <p class="section-subtitle">Filter by workspace role to find your ideal workstation hardware setup.</p>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterLaptops('all')">All Workstations</button>
+        <button class="filter-btn" onclick="filterLaptops('Developer')">Developer</button>
+        <button class="filter-btn" onclick="filterLaptops('Business')">Business</button>
+        <button class="filter-btn" onclick="filterLaptops('Ultraportable')">Ultraportable</button>
+      </div>
+
+      <!-- Laptop Card Grid -->
+      <div class="product-grid" id="catalog-grid">
+        <!-- Populated dynamically via JavaScript -->
+      </div>
+    </section>
+
+    <!-- SECTION 3: PRIVACY POLICY -->
+    <section id="section-privacy" class="page-section">
+      <div class="section-header">
+        <h2 class="section-title">Privacy Policy</h2>
+        <p class="section-subtitle">Transparent policies regarding your data protection and privacy rights.</p>
+      </div>
+
+      <div class="policy-content">
+        <p><strong>Last Updated:</strong> September 27, 2026</p>
+        
+        <p>At APEX Laptops, we respect your privacy and are committed to protecting your personal information through modern, transparent data practices.</p>
+
+        <h3>1. Information We Collect</h3>
+        <p>We only collect information necessary to provide you with premier service and product delivery:</p>
+        <ul>
+          <li><strong>Contact Information:</strong> Name, email address, and message submitted via our contact portal.</li>
+          <li><strong>Technical Data:</strong> Anonymized usage statistics such as page response times to optimize browser performance.</li>
+        </ul>
+
+        <h3>2. How We Use Your Data</h3>
+        <p>Your information is used strictly for legitimate business operations:</p>
+        <ul>
+          <li>Responding directly to customer support requests or business inquiries.</li>
+          <li>Improving software performance across mobile and desktop browser platforms.</li>
+          <li>Ensuring secure communication channels.</li>
+        </ul>
+
+        <h3>3. Data Security</h3>
+        <p>We implement end-to-end encryption protocols and maintain zero third-party data tracking scripts. Your personal information is never sold, leased, or rented to external telemetry networks.</p>
+
+        <h3>4. Contact Us Regarding Your Rights</h3>
+        <p>If you wish to access, request deletion, or update any personal data held by us, please reach out directly via our <a href="#" onclick="navigateTo('contact'); return false;" style="color: var(--accent); text-decoration: underline;">Contact Page</a>.</p>
+      </div>
+    </section>
+
+    <!-- SECTION 4: CONTACT US -->
+    <section id="section-contact" class="page-section">
+      <div class="section-header">
+        <h2 class="section-title">Contact Us</h2>
+        <p class="section-subtitle">Reach out for custom order configurations, enterprise inquiries, or support.</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Sidebar Info -->
+        <div class="contact-info-card">
+          <h3 class="font-serif" style="font-size: 1.5rem; margin-bottom: 1.5rem;">Direct Channels</h3>
+          
+          <div class="contact-info-item">
+            <div class="info-icon">
+              <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            </div>
+            <div>
+              <div style="font-weight: 600; font-size: 0.9375rem;">Email Support</div>
+              <div style="color: var(--text-muted); font-size: 0.875rem;">support@apexlaptops.com</div>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="info-icon">
+              <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            </div>
+            <div>
+              <div style="font-weight: 600; font-size: 0.9375rem;">Headquarters</div>
+              <div style="color: var(--text-muted); font-size: 0.875rem;">100 Silicon Way, Tech Suite 400</div>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="info-icon">
+              <svg style="width: 20px; height: 20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <div>
+              <div style="font-weight: 600; font-size: 0.9375rem;">Response Times</div>
+              <div style="color: var(--text-muted); font-size: 0.875rem;">Mon - Fri, 9am - 6pm EST</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <form id="contact-form" onsubmit="handleContactSubmit(event)" style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: var(--shadow-sm);">
+          <div class="form-group">
+            <label class="form-label" for="contact-name">Full Name</label>
+            <input type="text" id="contact-name" class="form-control" required placeholder="Jane Doe">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact-email">Email Address</label>
+            <input type="email" id="contact-email" class="form-control" required placeholder="jane@example.com">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact-subject">Subject</label>
+            <input type="text" id="contact-subject" class="form-control" required placeholder="Custom Specs Inquiry">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="contact-message">Message</label>
+            <textarea id="contact-message" class="form-control" required placeholder="Tell us about your hardware requirements..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+
+          <div id="form-status" class="form-status">
+            Thank you! Your message has been transmitted successfully. We will follow up shortly.
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Product Details Modal Dialog -->
+  <div id="product-modal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeModal(event)">&times;</button>
+      <div id="modal-body">
+        <!-- Content inserted dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand-logo" style="margin-bottom: 1rem;">
+            APEX<span class="dot"></span>
+          </div>
+          <p style="max-width: 280px; margin-bottom: 1rem;">
+            Minimalist workstations tailored for developers, designers, and enterprise innovators.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#" onclick="navigateTo('home'); return false;">Home</a></li>
+            <li><a href="#" onclick="navigateTo('laptops'); return false;">Laptops</a></li>
+            <li><a href="#" onclick="navigateTo('privacy'); return false;">Privacy Policy</a></li>
+            <li><a href="#" onclick="navigateTo('contact'); return false;">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Collections</h4>
+          <ul class="footer-links">
+            <li><a href="#" onclick="navigateTo('laptops'); filterLaptops('Developer'); return false;">Developer Edition</a></li>
+            <li><a href="#" onclick="navigateTo('laptops'); filterLaptops('Business'); return false;">Business Pro</a></li>
+            <li><a href="#" onclick="navigateTo('laptops'); filterLaptops('Ultraportable'); return false;">Ultraportable Slim</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul class="footer-links">
+            <li><a href="#" onclick="navigateTo('privacy'); return false;">Terms of Service</a></li>
+            <li><a href="#" onclick="navigateTo('privacy'); return false;">Privacy Policy</a></li>
+            <li><a href="#" onclick="navigateTo('privacy'); return false;">Security</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; <span id="current-year"></span> APEX Workstations Inc. All rights reserved.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#">GitHub</a>
+          <a href="#">Twitter</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Laptop Dataset
+    const laptopsData = [
+      {
+        id: 1,
+        title: "APEX Carbon 14 Pro",
+        category: "Developer",
+        price: "$1,899",
+        cpu: "M3 Max / 12-Core",
+        ram: "32 GB Unified",
+        storage: "1 TB NVMe SSD",
+        display: "14.2\" Retina (120Hz)",
+        weight: "1.2 kg",
+        image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80",
+        description: "The flagship machine for engineering workflows. High core counts ensure rapid code compilation without performance throttling."
+      },
+      {
+        id: 2,
+        title: "APEX Air Slim 13",
+        category: "Ultraportable",
+        price: "$1,299",
+        cpu: "Intel Core Ultra 7",
+        ram: "16 GB LPDDR5X",
+        storage: "512 GB SSD",
+        display: "13.6\" OLED 3K",
+        weight: "0.98 kg",
+        image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=600&q=80",
+        description: "Ultra-thin chassis designed for nomad creators and executives who require lightweight portability without compromising power."
+      },
+      {
+        id: 3,
+        title: "APEX Matrix 16 Workstation",
+        category: "Developer",
+        price: "$2,499",
+        cpu: "AMD Ryzen 9 7940HS",
+        ram: "64 GB DDR5",
+        storage: "2 TB PCIe 4.0",
+        display: "16.0\" QHD+ 240Hz",
+        weight: "1.8 kg",
+        image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=600&q=80",
+        description: "Maximum thermal dissipation paired with dual-channel expandable memory for heavy dataset rendering and AI workloads."
+      },
+      {
+        id: 4,
+        title: "APEX Executive 14",
+        category: "Business",
+        price: "$1,599",
+        cpu: "Intel Core Ultra 5",
+        ram: "16 GB LPDDR5",
+        storage: "1 TB SSD",
+        display: "14.0\" Anti-Glare IPS",
+        weight: "1.15 kg",
+        image: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&w=600&q=80",
+        description: "Sleek matte-black magnesium alloy finish equipped with enterprise hardware security features and all-day battery endurance."
+      },
+      {
+        id: 5,
+        title: "APEX Book Studio",
+        category: "Business",
+        price: "$1,999",
+        cpu: "Apple M3 Pro",
+        ram: "18 GB Unified",
+        storage: "512 GB SSD",
+        display: "14.2\" Liquid Retina",
+        weight: "1.3 kg",
+        image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=80",
+        description: "Precision-milled aluminum unibody designed for color-critical design work, audio engineering, and executive presentations."
+      },
+      {
+        id: 6,
+        title: "APEX Featherlite 12",
+        category: "Ultraportable",
+        price: "$1,099",
+        cpu: "ARM v9 Octa-Core",
+        ram: "16 GB LPDDR5",
+        storage: "256 GB SSD",
+        display: "12.5\" Touch IPS",
+        weight: "0.85 kg",
+        image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=600&q=80",
+        description: "Fanless, completely silent operation. Ideal for distraction-free writing, documentation, and continuous travel."
+      }
+    ];
+
+    // Initialization
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+      renderCatalog(laptopsData, 'catalog-grid');
+      renderCatalog(laptopsData.slice(0, 3), 'featured-grid');
+      setupThemeToggle();
+      setupMobileDrawer();
+    });
+
+    // Navigation / Routing Logic
+    function navigateTo(sectionId) {
+      // Hide all pages
+      document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+
+      // Show targeted page
+      const target = document.getElementById(`section-${sectionId}`);
+      if (target) {
+        target.classList.add('active');
+      }
+
+      // Update active nav link highlights
+      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+      const activeDesktopLink = document.getElementById(`nav-${sectionId}`);
+      if (activeDesktopLink) {
+        activeDesktopLink.classList.add('active');
+      }
+
+      // Close mobile drawer if open
+      const drawer = document.getElementById('mobile-drawer');
+      if (drawer.classList.contains('open')) {
+        drawer.classList.remove('open');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Render Laptop Cards
+    function renderCatalog(items, targetContainerId) {
+      const container = document.getElementById(targetContainerId);
+      if (!container) return;
+
+      container.innerHTML = items.map(laptop => `
+        <div class="product-card">
+          <div class="product-image-wrap">
+            <span class="product-badge">${laptop.category}</span>
+            <img src="${laptop.image}" alt="${laptop.title}" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3 class="product-title">${laptop.title}</h3>
+            <div class="product-price">${laptop.price}</div>
+            
+            <ul class="product-specs-list">
+              <li><span>Processor</span> <span class="val">${laptop.cpu}</span></li>
+              <li><span>Memory</span> <span class="val">${laptop.ram}</span></li>
+              <li><span>Storage</span> <span class="val">${laptop.storage}</span></li>
+              <li><span>Weight</span> <span class="val">${laptop.weight}</span></li>
+            </ul>
+
+            <div class="product-footer">
+              <button class="btn btn-secondary" onclick="openModal(${laptop.id})">Specs Details</button>
+              <button class="btn btn-primary" onclick="navigateTo('contact')">Inquire</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Category Filtering
+    function filterLaptops(category) {
+      // Update Filter Button States
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.includes(category) || (category === 'all' && btn.textContent.includes('All')));
+      });
+
+      if (category === 'all') {
+        renderCatalog(laptopsData, 'catalog-grid');
+      } else {
+        const filtered = laptopsData.filter(item => item.category === category);
+        renderCatalog(filtered, 'catalog-grid');
+      }
+    }
+
+    // Product Details Modal Dialog
+    function openModal(productId) {
+      const laptop = laptopsData.find(item => item.id === productId);
+      if (!laptop) return;
+
+      const modalBody = document.getElementById('modal-body');
+      modalBody.innerHTML = `
+        <div class="modal-header">
+          <span class="hero-tag">${laptop.category}</span>
+          <h2 class="font-serif" style="font-size: 1.8rem; margin-top: 0.25rem;">${laptop.title}</h2>
+          <div style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--accent); font-weight: 700; margin-top: 0.5rem;">${laptop.price}</div>
+        </div>
+        
+        <div class="modal-grid">
+          <div>
+            <img src="${laptop.image}" alt="${laptop.title}" style="width: 100%; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+          </div>
+          <div>
+            <p style="color: var(--text-muted); margin-bottom: 1.25rem; font-size: 0.9375rem; line-height: 1.6;">${laptop.description}</p>
+            <ul class="product-specs-list" style="margin-bottom: 1.5rem;">
+              <li><span>Display</span> <span class="val">${laptop.display}</span></li>
+              <li><span>Processor</span> <span class="val">${laptop.cpu}</span></li>
+              <li><span>Memory</span> <span class="val">${laptop.ram}</span></li>
+              <li><span>Storage</span> <span class="val">${laptop.storage}</span></li>
+              <li><span>Weight</span> <span class="val">${laptop.weight}</span></li>
+            </ul>
+            <button class="btn btn-primary" style="width: 100%;" onclick="closeModal(); navigateTo('contact');">Configure Order</button>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('product-modal').classList.add('active');
+    }
+
+    function closeModal(e) {
+      document.getElementById('product-modal').classList.remove('active');
+    }
+
+    // Theme Toggle Functionality
+    function setupThemeToggle() {
+      const toggleBtn = document.getElementById('theme-toggle-btn');
+      const sunIcon = document.getElementById('sun-icon');
+      const moonIcon = document.getElementById('moon-icon');
+
+      toggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        document.documentElement.setAttribute('data-theme', newTheme);
+        
+        if (newTheme === 'dark') {
+          sunIcon.style.display = 'block';
+          moonIcon.style.display = 'none';
+        } else {
+          sunIcon.style.display = 'none';
+          moonIcon.style.display = 'block';
+        }
+      });
+    }
+
+    // Mobile Drawer Setup
+    function setupMobileDrawer() {
+      const btn = document.getElementById('mobile-hamburger');
+      const drawer = document.getElementById('mobile-drawer');
+
+      btn.addEventListener('click', () => {
+        drawer.classList.toggle('open');
+      });
+    }
+
+    // Contact Form Handler
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const status = document.getElementById('form-status');
+      status.classList.add('success');
+      document.getElementById('contact-form').reset();
+
+      setTimeout(() => {
+        status.classList.remove('success');
+      }, 5000);
+    }
+  </script>
+</body>
+</html>
